@@ -7,62 +7,58 @@ public class FirstClass {
 		Random dice = new Random();
 		float floatnumber;
 		int intnumber;
-		int maximum = 10;
-		int count=1;
+		int maximum = 5;
+		int count=0;
+		int repeatCount=0;
 		
 		int arrayint[] = new int[100];
 		
-	while(count<maximum)
-	{
-		for(int i=0; i<count;i++) {
+		while(count<maximum)
+		{
+			
+
+		for(int mainLoop=0; mainLoop<count+1;mainLoop++) {
+		
+			//System.out.println("Main Loop " + mainLoop + " Starts");
 			
 			floatnumber = dice.nextFloat();
 			
 			intnumber = (int) (floatnumber *10);
 						
-			arrayint[i]= intnumber;
+			arrayint[mainLoop]= intnumber;
 			
-			//System.out.println(number + " number generated ");
+			repeatCount=0;
 			
-			int repeatCheck = 0;
+			//System.out.println(intnumber + " number generated ");
+
 			
 			for(int arraycheck=0;arraycheck<count;arraycheck++) {
 				
 				//System.out.println("Random Integer Now is " + intnumber);
 				//System.out.println("Array Element " + arraycheck + " is " + arrayint[arraycheck]);
 				
-				if(arrayint[arraycheck]==intnumber && i>0)
-				{ 	
-					repeatCheck++; 
+				if(arrayint[arraycheck]==intnumber && mainLoop>0)
+				{
+					repeatCount++; 
 				}
-				
-				//System.out.println("RepeatCheck value is " + repeatCheck);
+				//System.out.println("RepeatCheck value is " + repeatCount);
 			
-					}
-			//System.out.println("loop over");
+				}
+			   //System.out.println("loop " + mainLoop + " over");
 			
 						
-				if(repeatCheck==0) {
-				System.out.println("Random number " + intnumber + " printed in loop " + i);
-				//if(count<maximum)
-				count++;
-								
+				if(repeatCount<1) {
+				System.out.println("Random number " + intnumber + " printed in loop " + mainLoop);
+				repeatCount = 0;
 				}
 				
-				
-		}
+				if(repeatCount<1 && count<maximum)
+					count++;
+							
+		} //mainLoop Close
 		
-	}
-		// TODO Auto-generated method stub
-		System.out.println("Hello World!");
+		}
 
-	}
-	
-	public int randomGenerator(int minimum, int maximum) {
-		Random rn = new Random();
-		int range = maximum - minimum + 1;
-		int randomNum =  rn.nextInt(range) + minimum;
-		return randomNum;
+	} // main close
 
-}
-}
+} // class close
